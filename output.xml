@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0 (Python 3.10.8 on win32)" generated="20221105 20:19:03.693" rpa="false" schemaversion="3">
+<suite id="s1" name="Govtech-Testassignment-Sagarv" source="C:\SagarV\Projects\govtech-testassignment-sagarv">
+<suite id="s1-s1" name="Api-Test" source="C:\SagarV\Projects\govtech-testassignment-sagarv\api-test">
+<suite id="s1-s1-s1" name="Uc1 Insert Records" source="C:\SagarV\Projects\govtech-testassignment-sagarv\api-test\uc1_insert_records.robot">
+<test id="s1-s1-s1-t1" name="UC1_AC1: As the Clerk, I should be able to insert a single record of working class hero into database via an API" line="12">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20221105 20:19:04.697" level="INFO">Creating Session using : alias=session, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221105 20:19:04.697" endtime="20221105 20:19:04.697"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>birthday=11101985</arg>
+<arg>gender=M</arg>
+<arg>name=Sagar</arg>
+<arg>natid=33333</arg>
+<arg>salary=1000</arg>
+<arg>tax=10</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221105 20:19:04.697" level="INFO">${body} = {'birthday': '11101985', 'gender': 'M', 'name': 'Sagar', 'natid': '33333', 'salary': '1000', 'tax': '10'}</msg>
+<status status="PASS" starttime="20221105 20:19:04.697" endtime="20221105 20:19:04.697"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>session</arg>
+<arg>/calculator/insert</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=202</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20221105 20:19:04.726" level="INFO">POST Request : url=http://localhost:8080/calculator/insert 
+ path_url=/calculator/insert 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '105', 'Content-Type': 'application/json'} 
+ body=b'{"birthday": "11101985", "gender": "M", "name": "Sagar", "natid": "33333", "salary": "1000", "tax": "10"}' 
+ </msg>
+<msg timestamp="20221105 20:19:04.726" level="INFO">POST Response : url=http://localhost:8080/calculator/insert 
+ status=202, reason= 
+ headers={'Content-Type': 'text/plain;charset=UTF-8', 'Content-Length': '7', 'Date': 'Sat, 05 Nov 2022 14:49:04 GMT'} 
+ body=Alright 
+ </msg>
+<msg timestamp="20221105 20:19:04.726" level="INFO">${resp} = &lt;Response [202]&gt;</msg>
+<status status="PASS" starttime="20221105 20:19:04.697" endtime="20221105 20:19:04.726"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${resp}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221105 20:19:04.726" endtime="20221105 20:19:04.726"/>
+</kw>
+<tag>positive_tc</tag>
+<tag>sanity</tag>
+<status status="PASS" starttime="20221105 20:19:04.697" endtime="20221105 20:19:04.726"/>
+</test>
+<test id="s1-s1-s1-t2" name="UC1_AC1: Insert Endpoint should not accept Invalid Birthdate" line="19">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20221105 20:19:04.726" level="INFO">Creating Session using : alias=session, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221105 20:19:04.726" endtime="20221105 20:19:04.726"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>birthday=1110198</arg>
+<arg>gender=M</arg>
+<arg>name=Sagar</arg>
+<arg>natid=33333</arg>
+<arg>salary=1000</arg>
+<arg>tax=10</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221105 20:19:04.726" level="INFO">${body} = {'birthday': '1110198', 'gender': 'M', 'name': 'Sagar', 'natid': '33333', 'salary': '1000', 'tax': '10'}</msg>
+<status status="PASS" starttime="20221105 20:19:04.726" endtime="20221105 20:19:04.726"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>session</arg>
+<arg>/calculator/insert</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=500</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20221105 20:19:04.786" level="INFO">POST Request : url=http://localhost:8080/calculator/insert 
+ path_url=/calculator/insert 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '104', 'Content-Type': 'application/json'} 
+ body=b'{"birthday": "1110198", "gender": "M", "name": "Sagar", "natid": "33333", "salary": "1000", "tax": "10"}' 
+ </msg>
+<msg timestamp="20221105 20:19:04.786" level="INFO">POST Response : url=http://localhost:8080/calculator/insert 
+ status=500, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Sat, 05 Nov 2022 14:49:04 GMT', 'Connection': 'close'} 
+ body={"timestamp":"2022-11-05T14:49:04.776+0000","status":500,"error":"Internal Server Error","message":"Text '1110198' could not be parsed at index 4","path":"/calculator/insert"} 
+ </msg>
+<msg timestamp="20221105 20:19:04.786" level="INFO">${resp} = &lt;Response [500]&gt;</msg>
+<status status="PASS" starttime="20221105 20:19:04.726" endtime="20221105 20:19:04.786"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${resp.json()}[message]</arg>
+<arg>Text '1110198' could not be parsed at index 4</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221105 20:19:04.786" endtime="20221105 20:19:04.786"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${resp}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221105 20:19:04.797" endtime="20221105 20:19:04.798"/>
+</kw>
+<tag>negative_tc</tag>
+<tag>regression</tag>
+<status status="PASS" starttime="20221105 20:19:04.726" endtime="20221105 20:19:04.799"/>
+</test>
+<test id="s1-s1-s1-t3" name="UC1_AC1: Insert Endpoint should not accept Gender more than 1 character" line="27">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20221105 20:19:04.801" level="INFO">Creating Session using : alias=session, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221105 20:19:04.801" endtime="20221105 20:19:04.801"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>birthday=11101985</arg>
+<arg>gender=Male</arg>
+<arg>name=Sagar</arg>
+<arg>natid=33333</arg>
+<arg>salary=1000</arg>
+<arg>tax=10</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221105 20:19:04.801" level="INFO">${body} = {'birthday': '11101985', 'gender': 'Male', 'name': 'Sagar', 'natid': '33333', 'salary': '1000', 'tax': '10'}</msg>
+<status status="PASS" starttime="20221105 20:19:04.801" endtime="20221105 20:19:04.801"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>session</arg>
+<arg>/calculator/insert</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=500</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20221105 20:19:04.855" level="INFO">POST Request : url=http://localhost:8080/calculator/insert 
+ path_url=/calculator/insert 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '108', 'Content-Type': 'application/json'} 
+ body=b'{"birthday": "11101985", "gender": "Male", "name": "Sagar", "natid": "33333", "salary": "1000", "tax": "10"}' 
+ </msg>
+<msg timestamp="20221105 20:19:04.856" level="INFO">POST Response : url=http://localhost:8080/calculator/insert 
+ status=500, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Sat, 05 Nov 2022 14:49:04 GMT', 'Connection': 'close'} 
+ body={"timestamp":"2022-11-05T14:49:04.853+0000","status":500,"error":"Internal Server Error","message":"could not execute statement; SQL [n/a]; nested exception is org.hibernate.exception.DataException: could not execute statement","path":"/calculator/insert"} 
+ </msg>
+<msg timestamp="20221105 20:19:04.856" level="INFO">${resp} = &lt;Response [500]&gt;</msg>
+<status status="PASS" starttime="20221105 20:19:04.801" endtime="20221105 20:19:04.856"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${resp.json()}[message]</arg>
+<arg>could not execute statement; SQL [n/a]; nested exception is org.hibernate.exception.DataException: could not execute statement</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221105 20:19:04.857" endtime="20221105 20:19:04.858"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${resp}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221105 20:19:04.858" endtime="20221105 20:19:04.858"/>
+</kw>
+<tag>negative_tc</tag>
+<tag>regression</tag>
+<status status="PASS" starttime="20221105 20:19:04.801" endtime="20221105 20:19:04.858"/>
+</test>
+<test id="s1-s1-s1-t4" name="UC2_AC2. As the Clerk, I should be able to insert more than one working class hero into database via an API" line="36">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20221105 20:19:04.864" level="INFO">Creating Session using : alias=session, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221105 20:19:04.864" endtime="20221105 20:19:04.864"/>
+</kw>
+<kw name="Load Json From File" library="JSONLibrary">
+<var>${json_obj}</var>
+<arg>.\\test-data\\insert_multiple.json</arg>
+<doc>Load JSON from file.</doc>
+<msg timestamp="20221105 20:19:04.864" level="INFO">${json_obj} = [{'birthday': '11102000', 'gender': 'M', 'name': 'BOB', 'natid': '66666', 'salary': '1000', 'tax': '100'}, {'birthday': '11102000', 'gender': 'F', 'name': 'ROB', 'natid': '33333', 'salary': '1000', 't...</msg>
+<status status="PASS" starttime="20221105 20:19:04.864" endtime="20221105 20:19:04.864"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>session</arg>
+<arg>/calculator/insertMultiple</arg>
+<arg>json=${json_obj}</arg>
+<arg>expected_status=202</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20221105 20:19:04.880" level="INFO">POST Request : url=http://localhost:8080/calculator/insertMultiple 
+ path_url=/calculator/insertMultiple 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '212', 'Content-Type': 'application/json'} 
+ body=b'[{"birthday": "11102000", "gender": "M", "name": "BOB", "natid": "66666", "salary": "1000", "tax": "100"}, {"birthday": "11102000", "gender": "F", "name": "ROB", "natid": "33333", "salary": "1000", "tax": "100"}]' 
+ </msg>
+<msg timestamp="20221105 20:19:04.880" level="INFO">POST Response : url=http://localhost:8080/calculator/insertMultiple 
+ status=202, reason= 
+ headers={'Content-Type': 'text/plain;charset=UTF-8', 'Content-Length': '7', 'Date': 'Sat, 05 Nov 2022 14:49:04 GMT'} 
+ body=Alright 
+ </msg>
+<msg timestamp="20221105 20:19:04.880" level="INFO">${resp} = &lt;Response [202]&gt;</msg>
+<status status="PASS" starttime="20221105 20:19:04.864" endtime="20221105 20:19:04.880"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${resp}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221105 20:19:04.880" endtime="20221105 20:19:04.880"/>
+</kw>
+<tag>multiple_hero</tag>
+<status status="PASS" starttime="20221105 20:19:04.858" endtime="20221105 20:19:04.880"/>
+</test>
+<status status="PASS" starttime="20221105 20:19:03.783" endtime="20221105 20:19:04.880"/>
+</suite>
+<suite id="s1-s1-s2" name="uc4 getTaxRelief" source="C:\SagarV\Projects\govtech-testassignment-sagarv\api-test\uc4_getTaxRelief.robot">
+<test id="s1-s1-s2-t1" name="Get Tax Relief &#10; AC1: a GET endpoint which returns a list consist of natid, tax relief amount and name&#10; AC2: natid field must be masked from the 5th character onwards with dollar sign $ &#10;" line="12">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20221105 20:19:04.913" level="INFO">Creating Session using : alias=session, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221105 20:19:04.913" endtime="20221105 20:19:04.913"/>
+</kw>
+<kw name="Load Json From File" library="JSONLibrary">
+<var>${json_obj}</var>
+<arg>.//test-data//verify_tax_relief.json</arg>
+<doc>Load JSON from file.</doc>
+<msg timestamp="20221105 20:19:04.913" level="INFO">${json_obj} = [{'birthday': '11102000', 'gender': 'M', 'name': 'Albert', 'natid': '87403303', 'salary': '1000', 'tax': '100'}, {'birthday': '11102000', 'gender': 'F', 'name': 'Lee', 'natid': '878397727', 'salary': ...</msg>
+<status status="PASS" starttime="20221105 20:19:04.913" endtime="20221105 20:19:04.913"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>/calculator/insertMultiple</arg>
+<arg>json=${json_obj}</arg>
+<arg>expected_status=202</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20221105 20:19:04.927" level="INFO">POST Request : url=http://localhost:8080/calculator/insertMultiple 
+ path_url=/calculator/insertMultiple 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '446', 'Content-Type': 'application/json'} 
+ body=b'[{"birthday": "11102000", "gender": "M", "name": "Albert", "natid": "87403303", "salary": "1000", "tax": "100"}, {"birthday": "11102000", "gender": "F", "name": "Lee", "natid": "878397727", "salary": "1000", "tax": "100"}, {"birthday": "11102000", "gender": "F", "name": "Bondy", "natid": "786773312", "salary": "1000", "tax": "950"}, {"birthday": "11102000", "gender": "M", "name": "Steve", "natid": "000777444", "salary": "1000", "tax": "950"}]' 
+ </msg>
+<msg timestamp="20221105 20:19:04.927" level="INFO">POST Response : url=http://localhost:8080/calculator/insertMultiple 
+ status=202, reason= 
+ headers={'Content-Type': 'text/plain;charset=UTF-8', 'Content-Length': '7', 'Date': 'Sat, 05 Nov 2022 14:49:04 GMT'} 
+ body=Alright 
+ </msg>
+<status status="PASS" starttime="20221105 20:19:04.913" endtime="20221105 20:19:04.927"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>session</arg>
+<arg>/calculator/taxRelief</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20221105 20:19:04.936" level="INFO">GET Request : url=http://localhost:8080/calculator/taxRelief 
+ path_url=/calculator/taxRelief 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20221105 20:19:04.936" level="INFO">GET Response : url=http://localhost:8080/calculator/taxRelief 
+ status=200, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Sat, 05 Nov 2022 14:49:04 GMT'} 
+ body=[{"natid":"3333$","name":"Sagar","relief":"495.00"},{"natid":"6666$","name":"BOB","relief":"720.00"},{"natid":"3333$","name":"ROB","relief":"1220.00"},{"natid":"8740$$$$","name":"Albert","relief":"720.00"},{"natid":"8783$$$$$","name":"Lee","relief":"1220.00"},{"natid":"7867$$$$$","name":"Bondy","relief":"540.00"},{"natid":"0007$$$$$","name":"Steve","relief":"50.00"},{"natid":"8740$$$$","name":"Albert","relief":"720.00"},{"natid":"8783$$$$$","name":"Lee","relief":"1220.00"},{"natid":"7867$$$$$","name":"Bondy","relief":"540.00"},{"natid":"0007$$$$$","name":"Steve","relief":"50.00"},{"natid":"8740$$$$","name":"Albert","relief":"720.00"},{"natid":"8783$$$$$","name":"Lee","relief":"1220.00"},{"natid":"7867$$$$$","name":"Bondy","relief":"540.00"},{"natid":"0007$$$$$","name":"Steve","relief":"50.00"},{"natid":"8740$$$$","name":"Albert","relief":"720.00"},{"natid":"8783$$$$$","name":"Lee","relief":"1220.00"},{"natid":"7867$$$$$","name":"Bondy","relief":"540.00"},{"natid":"0007$$$$$","name":"Steve","relief":"50.00"},{"natid":"8740$$$$","name":"Albert","relief":"720.00"},{"natid":"8783$$$$$","name":"Lee","relief":"1220.00"},{"natid":"7867$$$$$","name":"Bondy","relief":"540.00"},{"natid":"0007$$$$$","name":"Steve","relief":"50.00"},{"natid":"8740$$$$","name":"Albert","relief":"720.00"},{"natid":"8783$$$$$","name":"Lee","relief":"1220.00"},{"natid":"7867$$$$$","name":"Bondy","relief":"540.00"},{"natid":"0007$$$$$","name":"Steve","relief":"50.00"},{"natid":"8740$$$$","name":"Albert","relief":"720.00"},{"natid":"8783$$$$$","name":"Lee","relief":"1220.00"},{"natid":"7867$$$$$","name":"Bondy","relief":"540.00"},{"natid":"0007$$$$$","name":"Steve","relief":"50.00"},{"natid":"8740$$$$","name":"Albert","relief":"720.00"},{"natid":"8783$$$$$","name":"Lee","relief":"1220.00"},{"natid":"7867$$$$$","name":"Bondy","relief":"540.00"},{"natid":"0007$$$$$","name":"Steve","relief":"50.00"},{"natid":"8740$$$$","name":"Albert","relief":"720.00"},{"natid":"8783$$$$$","name":"Lee","relief":"1220.00"},{"natid":"7867$$$$$","name":"Bondy","relief":"540.00"},{"natid":"0007$$$$$","name":"Steve","relief":"50.00"},{"natid":"8740$$$$","name":"Albert","relief":"720.00"},{"natid":"8783$$$$$","name":"Lee","relief":"1220.00"},{"natid":"7867$$$$$","name":"Bondy","relief":"540.00"},{"natid":"0007$$$$$","name":"Steve","relief":"50.00"},{"natid":"8740$$$$","name":"Albert","relief":"720.00"},{"natid":"8783$$$$$","name":"Lee","relief":"1220.00"},{"natid":"7867$$$$$","name":"Bondy","relief":"540.00"},{"natid":"0007$$$$$","name":"Steve","relief":"50.00"},{"natid":"8740$$$$","name":"Albert","relief":"720.00"},{"natid":"8783$$$$$","name":"Lee","relief":"1220.00"},{"natid":"7867$$$$$","name":"Bondy","relief":"540.00"},{"natid":"0007$$$$$","name":"Steve","relief":"50.00"},{"natid":"8740$$$$","name":"Albert","relief":"720.00"},{"natid":"8783$$$$$","name":"Lee","relief":"1220.00"},{"natid":"7867$$$$$","name":"Bondy","relief":"540.00"},{"natid":"0007$$$$$","name":"Steve","relief":"50.00"},{"natid":"2222$","name":"roger","relief":"50.00"},{"natid":"3333$","name":"david","relief":"549.00"},{"natid":"2222$","name":"roger","relief":"50.00"},{"natid":"3333$","name":"david","relief":"549.00"},{"natid":"3333$","name":"Sagar","relief":"495.00"},{"natid":"6666$","name":"BOB","relief":"720.00"},{"natid":"3333$","name":"ROB","relief":"1220.00"},{"natid":"8740$$$$","name":"Albert","relief":"720.00"},{"natid":"8783$$$$$","name":"Lee","relief":"1220.00"},{"natid":"7867$$$$$","name":"Bondy","relief":"540.00"},{"natid":"0007$$$$$","name":"Steve","relief":"50.00"}] 
+ </msg>
+<msg timestamp="20221105 20:19:04.936" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221105 20:19:04.927" endtime="20221105 20:19:04.936"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${resp}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221105 20:19:04.937" endtime="20221105 20:19:04.938"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20221105 20:19:04.938" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20221105 20:19:04.938" endtime="20221105 20:19:04.938"/>
+</kw>
+<kw name="Validate Json" library="JSONSchemaLibrary">
+<arg>relief-resp-schema.json</arg>
+<arg>${resp.content}</arg>
+<doc>Validates the sample JSON against the given schema.</doc>
+<status status="PASS" starttime="20221105 20:19:04.938" endtime="20221105 20:19:04.938"/>
+</kw>
+<kw name="Validate Tax Relief" library="Utils">
+<arg>${resp.content}</arg>
+<doc>This functions Validates AC: US4_AC3,US4_AC4,US4_AC5
+ie: AC4 - Rounding to 2 decimals
+AC5 - Computed Tax is in between 0.00 and 50.00 then Final Tax relief
+amount = 50.00</doc>
+<status status="PASS" starttime="20221105 20:19:04.938" endtime="20221105 20:19:04.938"/>
+</kw>
+<tag>sanity</tag>
+<tag>schema_validation</tag>
+<status status="PASS" starttime="20221105 20:19:04.900" endtime="20221105 20:19:04.938"/>
+</test>
+<status status="PASS" starttime="20221105 20:19:04.880" endtime="20221105 20:19:04.938"/>
+</suite>
+<status status="PASS" starttime="20221105 20:19:03.783" endtime="20221105 20:19:04.954"/>
+</suite>
+<suite id="s1-s2" name="Init" source="C:\SagarV\Projects\govtech-testassignment-sagarv\init.robot">
+<test id="s1-s2-t1" name="Set-up" line="2">
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${PWD}</arg>
+<arg>C:\\SagarV\\Projects\\govtech-testassignment-sagarv</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20221105 20:19:04.954" level="INFO">${PWD} = C:\SagarV\Projects\govtech-testassignment-sagarv</msg>
+<status status="PASS" starttime="20221105 20:19:04.954" endtime="20221105 20:19:04.954"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${PWD}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221105 20:19:04.954" endtime="20221105 20:19:04.954"/>
+</kw>
+<status status="PASS" starttime="20221105 20:19:04.954" endtime="20221105 20:19:04.954"/>
+</test>
+<status status="PASS" starttime="20221105 20:19:04.954" endtime="20221105 20:19:04.954"/>
+</suite>
+<suite id="s1-s3" name="Ui-Tests" source="C:\SagarV\Projects\govtech-testassignment-sagarv\ui-tests">
+<suite id="s1-s3-s1" name="Dispense Tax Relief" source="C:\SagarV\Projects\govtech-testassignment-sagarv\ui-tests\dispense_tax_relief.robot">
+<test id="s1-s3-s1-t1" name="UC5: As the Governor, I should be able to see a button on the screen so that I can dispense tax relief for my working class heroes" line="7">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>http://localhost:8080</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221105 20:19:05.764" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:8080'.</msg>
+<status status="PASS" starttime="20221105 20:19:05.764" endtime="20221105 20:19:08.293"/>
+</kw>
+<kw name="Get WebElement" library="SeleniumLibrary">
+<var>${dispense_btn}</var>
+<arg>css:a[href='dispense']</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<msg timestamp="20221105 20:19:08.346" level="INFO">${dispense_btn} = &lt;selenium.webdriver.remote.webelement.WebElement (session="59c93e837f0a094ad01276f2235b038d", element="7a9da90b-387e-4c7c-9ac9-c8b30b740d38")&gt;</msg>
+<status status="PASS" starttime="20221105 20:19:08.293" endtime="20221105 20:19:08.346"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${dispense_btn}</arg>
+<arg>Dispense Now</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20221105 20:19:08.354" level="INFO">Verifying element '&lt;selenium.webdriver.remote.webelement.WebElement (session="59c93e837f0a094ad01276f2235b038d", element="7a9da90b-387e-4c7c-9ac9-c8b30b740d38")&gt;' contains exact text 'Dispense Now'.</msg>
+<status status="PASS" starttime="20221105 20:19:08.352" endtime="20221105 20:19:08.380"/>
+</kw>
+<kw name="Get CSS Property Value">
+<var>${color}</var>
+<arg>${dispense_btn}</arg>
+<arg>background-color</arg>
+<doc>Get the CSS property value of an Element.</doc>
+<kw name="Get WebElement" library="SeleniumLibrary">
+<var>${css}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<msg timestamp="20221105 20:19:08.380" level="INFO">${css} = &lt;selenium.webdriver.remote.webelement.WebElement (session="59c93e837f0a094ad01276f2235b038d", element="7a9da90b-387e-4c7c-9ac9-c8b30b740d38")&gt;</msg>
+<status status="PASS" starttime="20221105 20:19:08.380" endtime="20221105 20:19:08.380"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<var>${prop_val}</var>
+<arg>${css}</arg>
+<arg>value_of_css_property</arg>
+<arg>${attribute name}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<msg timestamp="20221105 20:19:08.401" level="INFO">${prop_val} = rgba(220, 53, 69, 1)</msg>
+<status status="PASS" starttime="20221105 20:19:08.380" endtime="20221105 20:19:08.401"/>
+</kw>
+<msg timestamp="20221105 20:19:08.401" level="INFO">${color} = rgba(220, 53, 69, 1)</msg>
+<status status="PASS" starttime="20221105 20:19:08.380" endtime="20221105 20:19:08.401"/>
+</kw>
+<kw name="Should Match" library="BuiltIn">
+<arg>${color}</arg>
+<arg>rgba(220, 53, 69, 1)</arg>
+<doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
+<status status="PASS" starttime="20221105 20:19:08.401" endtime="20221105 20:19:08.401"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${dispense_btn}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221105 20:19:08.401" level="INFO">Clicking button '&lt;selenium.webdriver.remote.webelement.WebElement (session="59c93e837f0a094ad01276f2235b038d", element="7a9da90b-387e-4c7c-9ac9-c8b30b740d38")&gt;'.</msg>
+<status status="PASS" starttime="20221105 20:19:08.401" endtime="20221105 20:19:08.902"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Cash dispensed</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20221105 20:19:08.927" level="INFO">Current page contains text 'Cash dispensed'.</msg>
+<status status="PASS" starttime="20221105 20:19:08.904" endtime="20221105 20:19:08.927"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221105 20:19:08.928" endtime="20221105 20:19:11.108"/>
+</kw>
+<tag>postive_tc</tag>
+<tag>sanity</tag>
+<tag>upload_csv</tag>
+<status status="PASS" starttime="20221105 20:19:05.748" endtime="20221105 20:19:11.108"/>
+</test>
+<status status="PASS" starttime="20221105 20:19:04.970" endtime="20221105 20:19:11.111"/>
+</suite>
+<suite id="s1-s3-s2" name="Upload Csv Tests" source="C:\SagarV\Projects\govtech-testassignment-sagarv\ui-tests\upload_csv_tests.robot">
+<test id="s1-s3-s2-t1" name="UC3: User can insert recpord through uploading csv" line="10">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>http://localhost:8080</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221105 20:19:11.145" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:8080'.</msg>
+<status status="PASS" starttime="20221105 20:19:11.144" endtime="20221105 20:19:13.839"/>
+</kw>
+<kw name="Pwd" library="Utils">
+<var>${DIR}</var>
+<msg timestamp="20221105 20:19:13.843" level="INFO">${DIR} = C:\SagarV\Projects\govtech-testassignment-sagarv</msg>
+<status status="PASS" starttime="20221105 20:19:13.842" endtime="20221105 20:19:13.843"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${DIR}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221105 20:19:13.843" endtime="20221105 20:19:13.843"/>
+</kw>
+<kw name="Choose File" library="SeleniumLibrary">
+<arg>css:input[type='file']</arg>
+<arg>${DIR}//test-data//sample_data.csv</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<msg timestamp="20221105 20:19:13.848" level="INFO">Sending C:\SagarV\Projects\govtech-testassignment-sagarv\test-data\sample_data.csv to browser.</msg>
+<status status="PASS" starttime="20221105 20:19:13.847" endtime="20221105 20:19:13.939"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221105 20:19:13.940" endtime="20221105 20:19:16.101"/>
+</kw>
+<tag>postive_tc</tag>
+<tag>sanity</tag>
+<tag>upload_csv</tag>
+<status status="PASS" starttime="20221105 20:19:11.144" endtime="20221105 20:19:16.102"/>
+</test>
+<status status="PASS" starttime="20221105 20:19:11.113" endtime="20221105 20:19:16.102"/>
+</suite>
+<status status="PASS" starttime="20221105 20:19:04.954" endtime="20221105 20:19:16.107"/>
+</suite>
+<status status="PASS" starttime="20221105 20:19:03.693" endtime="20221105 20:19:16.113"/>
+</suite>
+<statistics>
+<total>
+<stat pass="8" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">multiple_hero</stat>
+<stat pass="2" fail="0" skip="0">negative_tc</stat>
+<stat pass="1" fail="0" skip="0">positive_tc</stat>
+<stat pass="2" fail="0" skip="0">postive_tc</stat>
+<stat pass="2" fail="0" skip="0">regression</stat>
+<stat pass="4" fail="0" skip="0">sanity</stat>
+<stat pass="1" fail="0" skip="0">schema_validation</stat>
+<stat pass="2" fail="0" skip="0">upload_csv</stat>
+</tag>
+<suite>
+<stat pass="8" fail="0" skip="0" id="s1" name="Govtech-Testassignment-Sagarv">Govtech-Testassignment-Sagarv</stat>
+<stat pass="5" fail="0" skip="0" id="s1-s1" name="Api-Test">Govtech-Testassignment-Sagarv.Api-Test</stat>
+<stat pass="4" fail="0" skip="0" id="s1-s1-s1" name="Uc1 Insert Records">Govtech-Testassignment-Sagarv.Api-Test.Uc1 Insert Records</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s2" name="uc4 getTaxRelief">Govtech-Testassignment-Sagarv.Api-Test.uc4 getTaxRelief</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s2" name="Init">Govtech-Testassignment-Sagarv.Init</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s3" name="Ui-Tests">Govtech-Testassignment-Sagarv.Ui-Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s3-s1" name="Dispense Tax Relief">Govtech-Testassignment-Sagarv.Ui-Tests.Dispense Tax Relief</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s3-s2" name="Upload Csv Tests">Govtech-Testassignment-Sagarv.Ui-Tests.Upload Csv Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

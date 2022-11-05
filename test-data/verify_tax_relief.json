@@ -1,0 +1,34 @@
+[
+  {
+    "birthday": "11102000",
+    "gender": "M",
+    "name": "Albert",
+    "natid": "87403303",
+    "salary": "1000",
+    "tax": "100"
+  },
+  {
+    "birthday": "11102000",
+    "gender": "F",
+    "name": "Lee",
+    "natid": "878397727",
+    "salary": "1000",
+    "tax": "100"
+  },
+  {
+    "birthday": "11102000",
+    "gender": "F",
+    "name": "Bondy",
+    "natid": "786773312",
+    "salary": "1000",
+    "tax": "950"
+  },
+  {
+    "birthday": "11102000",
+    "gender": "M",
+    "name": "Steve",
+    "natid": "000777444",
+    "salary": "1000",
+    "tax": "950"
+  }
+]

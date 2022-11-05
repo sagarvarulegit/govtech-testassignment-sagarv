@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "natid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "relief": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "natid",
+        "name",
+        "relief"
+      ]
+    }
+  ]
+}
