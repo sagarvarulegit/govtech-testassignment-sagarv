@@ -60,3 +60,11 @@ def validate_tax_relief(resp):
                     calculated_tax = 50.00
 
                 assert float(i["relief"]) == calculated_tax
+
+
+def get_dict_from_list(li, data):
+    '''Get Dict obj from list of dict'''
+    data = dict(data)
+    for k,v in data.items():
+        for d in li:
+            if (k, v) in d.items(): return d
