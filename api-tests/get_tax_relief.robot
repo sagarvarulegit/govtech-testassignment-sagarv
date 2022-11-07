@@ -6,11 +6,12 @@ Library  OperatingSystem
 Library  .//utils//Utils.py
 Library  Collections
 
+Documentation           UC4 AC1 to AC6: Get Tax Relief \n AC1: a GET endpoint which returns a list consist of natid, tax relief amount and name AC2: natid field must be masked from the 5th character onwards with dollar sign $ \n
+
 
 *** Test Cases ***
-UC4 AC1 to AC6: Get Tax Relief \n AC1: a GET endpoint which returns a list consist of natid, tax relief amount and name\n AC2: natid field must be masked from the 5th character onwards with dollar sign $ \n
+Verify Tax Relief schema
     [Tags]      schema_validation   sanity
-
     Create Session    session  ${app_url}
     ${json_obj}     Load Json From File     .//test-data//verify_tax_relief.json
     POST On Session     session     /calculator/insertMultiple  json=${json_obj}    expected_status=202
@@ -33,6 +34,17 @@ Validate Tax Relief rounding on edge case. In this case Calulated Tax Relief = 5
     ${dict}=    get_dict_from_list  ${resp_li}      ${d}
     ${relief_amt}=  Get From Dictionary    ${dict}    relief
     Should Be Equal    ${relief_amt}    51.00
+
+Verify Total Amount in Tax Relief Summary is correct
+        [Tags]      sanity
+        Create Session    session  http://localhost:8080
+        ${resp}=   GET On Session  session  /calculator/taxRelief  expected_status=200
+        ${amount}=      calculate_tax_amount    ${resp.content}
+        Log To Console    ${amount}
+        ${resp}=   GET On Session  session  /calculator/taxReliefSummary
+        Should Be Equal    ${amount}    ${resp.json()}[totalTaxReliefAmount]
+
+
 
 
 

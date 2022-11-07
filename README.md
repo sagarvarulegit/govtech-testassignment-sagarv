@@ -29,7 +29,7 @@ Report:  `{root}\report.html`
 ## Defects
 1.	When we click on Browse button and select a file, the path or filename is not displayed in the “Choose file” text box. Only tool tip is displayed on mouse over.
 2.	No message is displayed if uploaded file is successful or not.
-3.	User Story 4 – AC1- Name of the working-class heroes is not displayed to the Bookkeeper in the UI.
+3.	Name of the working-class heroes is not displayed to the Bookkeeper in the UI.
 4.	On Dispense cash button click without any data(When no records are present), the message still shows cash dispensed.
 5.	Decimal values are displayed in certain scenarios when decimal values are greater than 0.50
 6.	Duplicate Records 

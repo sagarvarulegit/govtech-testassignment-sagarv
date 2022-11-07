@@ -79,3 +79,11 @@ def get_driver_path_with_browser(browser_name):
         driver_path = GeckoDriverManager().install()
     print(driver_path)
     return driver_path
+
+
+def calculate_tax_amount(resp):
+    amount = 0.00
+    resp_json = jc.JSONLibrary.convert_string_to_json(resp)
+    for i in resp_json:
+        amount += float(i["relief"])
+    return format(amount, ".2f");
