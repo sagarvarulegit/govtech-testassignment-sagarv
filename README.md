@@ -1,14 +1,19 @@
 # govtech-testassignment-sagarv
 
+This project is showcase test automation of Oppenheimer Project which is part of hiring test engineer role.
+Test script are written in RobotFramework based on Python3. Test scripts cover automation of all the User-stories and its,
+Acceptance Criteria as well edge cases and negative scenarios.
+
+
 ## Pre-requiste
 - ``Python 3.10.8 or higher``
 - ``RobotFramework 6.0``
 - Make sure application is running on http://localhost:8080
 
 ## Steps to Run Tests
-``pip install -r requirements.txt``
-1. ``cd {project dir path}``
-2. run ``python -m "robot" --variable app_url:http://localhost:8080 --variable browser:chrome .`` . This will run entire test-suite which consist of API and UI tests both.
+1. ``pip install -r requirements.txt``
+2. ``cd {project dir path}``
+3. run ``python -m "robot" --variable app_url:http://localhost:8080 --variable browser:chrome .``. This will run entire test-suite which consist of API and UI tests both.
 
 ## Description
 Test Suite is segregated into directories conveying its usage as below.
@@ -22,9 +27,12 @@ Test Suite is segregated into directories conveying its usage as below.
 
 ### Reports
 Reports are generated in mentioned files below:
-Output:  `{root}\output.xml`
-Log:     `{root}\log.html`
-Report:  `{root}\report.html`
+- Output:  `{root}\output.xml`
+- Log:     `{root}\log.html`
+- Report:   `{root}\report.html`
+
+*1 Failed Test in report is genuine failed scenario. Application is not rounding decimal when value has .5, which is genuine defect*
+
 
 ## Defects
 1.	When we click on Browse button and select a file, the path or filename is not displayed in the “Choose file” text box. Only tool tip is displayed on mouse over.
