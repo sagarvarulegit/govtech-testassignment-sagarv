@@ -1,6 +1,6 @@
 # govtech-testassignment-sagarv
 
-This project is showcase test automation of Oppenheimer Project which is part of hiring test engineer role.
+This project showcase test automation of Oppenheimer Project which is part of hiring test engineer role.
 Test script are written in RobotFramework based on Python3. Test scripts cover automation of all the User-stories and its,
 Acceptance Criteria as well edge cases and negative scenarios.
 
