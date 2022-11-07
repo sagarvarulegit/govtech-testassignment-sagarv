@@ -1,7 +1,8 @@
-import JSONLibrary
 import JSONLibrary as jc
 import datetime
 import os
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 
 
 def pwd():
@@ -65,6 +66,16 @@ def validate_tax_relief(resp):
 def get_dict_from_list(li, data):
     '''Get Dict obj from list of dict'''
     data = dict(data)
-    for k,v in data.items():
+    for k, v in data.items():
         for d in li:
             if (k, v) in d.items(): return d
+
+
+def get_driver_path_with_browser(browser_name):
+    driver_path = ""
+    if browser_name.lower() == 'chrome':
+        driver_path = ChromeDriverManager().install()
+    elif browser_name.lower() == 'firefox':
+        driver_path = GeckoDriverManager().install()
+    print(driver_path)
+    return driver_path

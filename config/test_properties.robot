@@ -1,2 +1,0 @@
- *** Variables ***
- ${base_url}

@@ -1,12 +1,15 @@
 *** Settings ***
 Library  SeleniumLibrary
-Test Setup       Open Browser    http://localhost:8080   Chrome
+Library   .//utils//Utils.py
 Test Teardown    Close All Browsers
 
 *** Test Cases ***
 UC5: As the Governor, I should be able to see a button on the screen so that I can dispense tax relief for my working class heroes
 
     [Tags]  upload_csv  sanity  postive_tc
+    ${driver_path}=    get_driver_path_with_browser        ${browser}
+    Create Webdriver     Chrome     executable_path=${driver_path}
+    Go To    ${app_url}
     ${dispense_btn}      Get WebElement    css:a[href='dispense']
     Element Text Should Be      ${dispense_btn}        Dispense Now
     ${color}=   Get CSS Property Value    ${dispense_btn}    background-color
